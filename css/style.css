@@ -1,0 +1,57 @@
+input[type="submit"] {
+    all: unset;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    background-image: url('../public/images/waves.svg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.logo {
+    margin: 2rem;
+}
+
+.auth-form {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+input[type="text"], input[type="password"], input[type="submit"] {
+    width: 100%;
+    padding: 10px 20px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #f5f5f5;
+    background-color: #fcfcfc;
+    font-size: 1em;
+}
+
+input[type="submit"] {
+    text-align: center;
+    background-color: rgb(30, 30, 126);
+    color: #f5f5f5;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+
