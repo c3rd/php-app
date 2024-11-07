@@ -1,3 +1,7 @@
+<?php
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,8 +15,15 @@
         <img src="public/images/logo.svg" alt="Logo" class="logo">
     </header>
     <main class="container">
+        <?php if(isset($_SESSION['message'])) { ?>
+            <div class="flash-message">
+                <p><?php echo $_SESSION['message'] ?></p>
+            </div>
+        <?php }    
+            unset($_SESSION['message']);
+        ?>
         <section class="auth-form">
-            <form action="" method="post">
+            <form action="authenticate.php" method="post">
                 <input type="text" id="username" name="username" placeholder="Username" required>
                 <input type="password" id="password" name="password" placeholder="Password" required>
                 <input type="submit" value="Login">
