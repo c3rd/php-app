@@ -22,11 +22,11 @@ session_start();
         <?php }    
             unset($_SESSION['message']);
         ?>
-        <section class="auth-form">
+        <section class="form">
             <form action="authenticate.php" method="post">
-                <input type="text" id="username" name="username" placeholder="Username" required>
-                <input type="password" id="password" name="password" placeholder="Password" required>
-                <input type="submit" value="Login">
+                <input class="form-input" type="text" id="username" name="username" placeholder="Username" required>
+                <input class="form-input" type="password" id="password" name="password" placeholder="Password" required>
+                <input class="form-button" type="submit" value="Login">
             </form>
         </section>
     </main>
