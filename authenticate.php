@@ -1,6 +1,4 @@
 <?php
-
-session_destroy();
 session_start();
 
 $username = $_POST['username'];
