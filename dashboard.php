@@ -1,5 +1,10 @@
 <?php
 session_start();
+if (empty($_SESSION['username'])) {
+    $_SESSION['message'] = 'You need to be logged in to acess';
+    header('Location: index.php');
+}
+
 ?>
 
 <!DOCTYPE html>
@@ -16,12 +21,12 @@ session_start();
     </header>
     <main class="container">
         <section class="form">
+            <h3 class="section-title">Create News</h3>
             <form method="post">
-                <label for="title">Create News</label>
                 <input class="form-input" type="text" id="title" name="title" placeholder="Title" required>
                 <input class="form-input" type="textarea" id="description" name="description" placeholder="Description" required>
                 <input class="form-button" type="submit" value="Create">
-                <input class="form-button" type="submit" value="Logout">
+                <a href="logout.php" class="form-button">Logout</a>
             </form>
         </section>
     </main>
