@@ -1,16 +1,19 @@
 <?php
+require_once './src/infra/database/DatabaseConnection.php';
+
+use Infra\Database\DatabaseConnection;
+
+
 if (empty($_SESSION)) {
     session_start();
 }
-
 $host = getenv('MYSQL_HOST');
 $db = getenv('MYSQL_DATABASE');
-$user = getenv('MYSQL_USER');
-$pass = getenv('MYSQL_PASSWORD');
-
+$username = getenv('MYSQL_USER');
+$password = getenv('MYSQL_PASSWORD');
 $dsn = "mysql:host=$host;dbname=$db";
-$pdo = new PDO($dsn, $user, $pass);
-$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+$connection = new DatabaseConnection($dsn, $username, $password);
 
 ?>
 

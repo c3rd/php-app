@@ -3,7 +3,7 @@ require_once './src/application/repository/IArticleRepository.php';
 require_once './src/infra/repository/ArticleRepository.php';
 require_once './src/infra/controller/ArticleController.php';
 
-$articleRepository = new \Infra\Repository\ArticleRepository($pdo);
+$articleRepository = new \Infra\Repository\ArticleRepository($connection->getPDO());
 $articleController = new \Infra\Controller\ArticleController($articleRepository);
 $articles = $articleController->handleRequest();
 

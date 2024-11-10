@@ -4,13 +4,14 @@ namespace Infra\Repository;
 
 use Application\Repository\IArticleRepository;
 use Domain\Article;
+use Infra\Database\DatabaseConnection;
 use PDO;
 
 class ArticleRepository implements IArticleRepository {
 
     private $pdo;
 
-    public function __construct(\PDO $pdo)
+    public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
     }
