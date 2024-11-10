@@ -18,7 +18,7 @@ class ArticleRepository implements IArticleRepository {
 
     public function all()
     {
-        $stmt = $this->pdo->query("SELECT * FROM articles ORDER BY created_at DESC");
+        $stmt = $this->pdo->query("SELECT * FROM articles");
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
