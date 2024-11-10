@@ -24,14 +24,20 @@ class ArticleRepository implements IArticleRepository {
 
     public function create(Article $article)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO articles (title, content) VALUES (:title, :content)");
-        return $stmt->execute(['title' => $article->getTitle(), 'content' => $article->getDescription()]);
+        $stmt = $this->pdo->prepare("INSERT INTO articles (title, description) VALUES (:title, :description)");
+        return $stmt->execute(['title' => $article->getTitle(), 'description' => $article->getDescription()]);
+    }
+
+    public function find(int $id)
+    {
+        $stmt = $this->pdo->query("SELECT * FROM articles WHERE id = $id ORDER BY created_at DESC LIMIT 1");
+        return $stmt->fetch(PDO::FETCH_ASSOC);
     }
 
     public function update(Article $article)
     {
-        $stmt = $this->pdo->prepare("UPDATE articles SET title = :title, content = :content WHERE id = :id");
-        return $stmt->execute(['id' => $article->getId(), 'title' => $article->getTitle(), 'content' => $article->getDescription()]);
+        $stmt = $this->pdo->prepare("UPDATE articles SET title = :title, description = :description WHERE id = :id");
+        return $stmt->execute(['id' => $article->getId(), 'title' => $article->getTitle(), 'description' => $article->getDescription()]);
     }
 
     public function delete(int $id)
