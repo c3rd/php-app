@@ -1,5 +1,17 @@
 <?php
-session_start();
+if (empty($_SESSION)) {
+    session_start();
+}
+
+$host = getenv('MYSQL_HOST');
+$db = getenv('MYSQL_DATABASE');
+$user = getenv('MYSQL_USER');
+$pass = getenv('MYSQL_PASSWORD');
+
+$dsn = "mysql:host=$host;dbname=$db";
+$pdo = new PDO($dsn, $user, $pass);
+$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
 ?>
 
 <!DOCTYPE html>
@@ -15,20 +27,8 @@ session_start();
         <img src="public/images/logo.svg" alt="Logo" class="logo">
     </header>
     <main class="container">
-        <?php if(isset($_SESSION['message'])) { ?>
-            <div class="flash-message">
-                <p><?php echo $_SESSION['message'] ?></p>
-            </div>
-        <?php }    
-            unset($_SESSION['message']);
-        ?>
-        <section class="form">
-            <form action="authenticate.php" method="post">
-                <input class="form-input" type="text" id="username" name="username" placeholder="Username" required>
-                <input class="form-input" type="password" id="password" name="password" placeholder="Password" required>
-                <input class="form-button" type="submit" value="Login">
-            </form>
-        </section>
+        <?php if (empty($_SESSION['username'])) { include_once 'login.php';?>
+        <?php } else { include_once 'dashboard.php'; } ?>
     </main>
 </body>
 </html>
