@@ -1,6 +1,8 @@
 <?php
 
-namespace Domain;
+namespace Application\Repository;
+
+use Domain\Article;
 
 interface IArticleRepository {
     public function all();

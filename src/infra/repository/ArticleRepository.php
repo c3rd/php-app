@@ -2,8 +2,8 @@
 
 namespace Infra\Repository;
 
+use Application\Repository\IArticleRepository;
 use Domain\Article;
-use Domain\IArticleRepository;
 use PDO;
 
 class ArticleRepository implements IArticleRepository {

@@ -1,5 +1,5 @@
 <?php
-require_once './src/domain/IArticleRepository.php';
+require_once './src/application/repository/IArticleRepository.php';
 require_once './src/infra/repository/ArticleRepository.php';
 require_once './src/infra/controller/ArticleController.php';
 
