@@ -1,17 +1,8 @@
 <?php
-require_once './src/infra/database/DatabaseConnection.php';
-
-use Infra\Database\DatabaseConnection;
-
 
 if (empty($_SESSION)) {
     session_start();
 }
-$username = getenv('MYSQL_USER');
-$password = getenv('MYSQL_PASSWORD');
-$dsn = "mysql:host=" . getenv('MYSQL_HOST') .";dbname=" . getenv('MYSQL_DATABASE');
-
-$connection = new DatabaseConnection($dsn, $username, $password);
 
 ?>
 
@@ -29,7 +20,7 @@ $connection = new DatabaseConnection($dsn, $username, $password);
     </header>
     <main class="container">
         <?php if(isset($_SESSION['message'])) { ?>
-            <div class="flash-message">
+            <div class="flash-message <?php echo isset($_SESSION['status']) && $_SESSION['status'] ?'success' : 'error'; ?>">
                 <p><?php echo $_SESSION['message'] ?></p>
             </div>
         <?php }    
