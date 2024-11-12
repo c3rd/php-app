@@ -20,15 +20,15 @@ $articles = $articleController->handleRequest();
             <?php foreach ($articles as $article): ?>
             <div class="article">
                 <div>
-                    <span class="title"><?php echo htmlspecialchars($article['title']); ?></span>
-                    <span class="description"><?php echo htmlspecialchars($article['description']); ?></span>
+                    <span class="news-title"><?php echo htmlspecialchars($article['title']); ?></span>
+                    <span class="news-description"><?php echo htmlspecialchars($article['description']); ?></span>
                 </div>
-                <div>
-                    <a onclick="editArticle(<?php echo $article['id']; ?>)"><img src="public/images/pencil.svg" alt="Edit" width="15" height="15"></a>
+                <div class="actions">
+                    <button class="action-icon" onclick="editArticle(<?php echo $article['id']; ?>)"><img src="public/images/pencil.svg" alt="Edit" width="12" height="12"></a>
                     <form action="news.php" method="post">
                         <input type="hidden" name="article_id" value="<?php echo $article['id']; ?>">
                         <input type="hidden" name="action" value="delete">
-                        <button type="submit"><img src="public/images/close.svg" alt="Edit" width="15" height="15"></button>
+                        <button class="action-icon" type="submit"><img src="public/images/close.svg" alt="Delete" width="12" height="12"></button>
                     </form>
                 </div>
             </div>
@@ -39,7 +39,7 @@ $articles = $articleController->handleRequest();
 <section class="form">
     <div class="form-header">
         <h3 id="form_header" class="section-title">Create News</h3>
-        <button id="close_edit_mode" onclick="resetForm()" href=""><img src="public/images/close.svg" alt="Edit" width="15" height="15"></button>
+        <button class="action-icon" id="close_edit_mode" onclick="resetForm()" href=""><img src="public/images/close.svg" alt="Close" width="12" height="12"></button>
     </div>
     <form action="news.php" method="post">
         <input type="hidden" id="form_article_id" name="article_id">
@@ -57,8 +57,8 @@ $articles = $articleController->handleRequest();
     function editArticle(id)
     {
         const articleDiv = event.target.closest('.article'); 
-        const title = articleDiv.querySelector('.title').textContent;
-        const description = articleDiv.querySelector('.description').textContent;
+        const title = articleDiv.querySelector('.news-title').textContent;
+        const description = articleDiv.querySelector('.news-description').textContent;
 
         document.getElementById('title').value = title;
         document.getElementById('description').value = description;
@@ -72,7 +72,7 @@ $articles = $articleController->handleRequest();
     {
         document.getElementById('title').value = '';
         document.getElementById('description').value = '';
-        document.getElementById('article_id').value = '';
+        document.getElementById('form_article_id').value = '';
         document.getElementById('form_header').textContent = "Create News";
         document.querySelector('input.form-button[type="submit"]').value = "Create";
         document.querySelector('#close_edit_mode').style.display = 'none';
