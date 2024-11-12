@@ -16,22 +16,30 @@ class ArticleController {
 
     public function handleRequest()
     {
-        if (isset($_POST['method'])) 
+        if ($_SERVER['REQUEST_METHOD'] == 'POST')
         {
-            switch ($_POST['method']) {
-                case 'create':
-                    $article = new Article(null, $_POST['title'], $_POST['description']);
-                    $this->articleRepository->create($article);
-                    break;
-                case 'update':
-                    $this->articleRepository->update($_POST['id'], $_POST['title'], $_POST['description']);
-                case 'delete':
-                    $this->articleRepository->delete($_POST['id']);
-                default:
-                    break;
+            if (!empty($_POST['article_id']) && empty($_POST['action']))
+            {
+                $article = new Article($_POST['article_id'], $_POST['title'], $_POST['description']);
+                $success = $this->articleRepository->update($article);
+                $message = 'News was changed sucessfully!';
             }
+            elseif (!empty($_POST['article_id']) && $_POST['action'] == 'delete')
+            {
+                $success = $this->articleRepository->delete($_POST['article_id']);
+                $message = 'News was sucessfully deleted';
+            }
+            else
+            {
+                $article = new Article(null, $_POST['title'], $_POST['description']);
+                $success = $this->articleRepository->create($article);
+                $message = 'News was successfully created!';
+            }
+            $_SESSION['status'] = $success;
+            $_SESSION['message'] = $success ? $message : 'Error Occured';
+            header('Location: index.php');
         }
-        elseif (isset($_GET))
+        elseif ($_SERVER['REQUEST_METHOD'] == 'GET')
         {
             return $this->articleRepository->all();
         }
