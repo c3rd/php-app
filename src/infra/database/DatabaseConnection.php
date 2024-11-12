@@ -6,17 +6,29 @@ use PDO;
 
 class DatabaseConnection {
 
-    public $pdo;
+    private static $instance;
+    private $connection;
 
-    public function __construct($dsn, $username, $password)
+    public function __construct()
     {
-        $this->pdo = new PDO($dsn, $username, $password);
-        $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $username = getenv('MYSQL_USER');
+        $password = getenv('MYSQL_PASSWORD');
+        $dsn = "mysql:host=" . getenv('MYSQL_HOST') .";dbname=" . getenv('MYSQL_DATABASE');
+        $this->connection = new PDO($dsn, $username, $password);
+        $this->connection->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     }
 
-    public function getPDO()
+    public static function getInstance()
     {
-        return $this->pdo;
+        if (empty(self::$instance)) {
+            self::$instance = new DatabaseConnection();
+        }
+        return self::$instance;
+    }
+
+    public function getConnection()
+    {
+        return $this->connection;
     }
 
     public function query()
