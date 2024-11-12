@@ -4,8 +4,12 @@ html, body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+textarea {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
 body {
-    background-image: url('../public/images/waves.svg');
+    background-image: url('../images/waves.svg');
     background-size: cover;
     background-repeat: no-repeat;
 }
@@ -20,10 +24,9 @@ button {
 }
 
 .container {
-    width: 90%;
+    width: 80%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 20px;
 }
 
 .logo {
@@ -36,75 +39,40 @@ button {
     margin: 0 auto;
 }
 
-.flash-message {
-    max-width: 500px;
-    width: 100%;
-    margin: 0 auto;
-}
-
-.flash-message p {
-    width: 100%;
-    padding: 20px 20px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    border: 1px solid #ffd9d9;
-    background-color: #ffd6d6;
-    font-size: .75em;
-    color: red;
-    text-align: center;
-}
-
-.error p {
-    width: 100%;
-    padding: 20px 20px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    border: 1px solid #ffd9d9;
-    background-color: #ffd6d6;
-    font-size: .75em;
-    color: red;
-    text-align: center;
-}
-
-.success p {
-    width: 100%;
-    padding: 20px 20px;
-    margin-bottom: 15px;
-    border-radius: 4px;
-    border: 1px solid #daffd9;
-    background-color: #dbffd6;
-    font-size: .75em;
-    color: green;
-    text-align: center;
-}
-
 .form-input {
-    all: unset;
+    display: block;
+    box-sizing: border-box;
     width: 100%;
     padding: 12px 20px;
     margin-bottom: 15px;
     border-radius: 4px;
     border: 1px solid #f5f5f5;
-    background-color: #fcfcfc;
-    font-size: .75em;
+    background-color: #fcfcfc85;
 }
 
 .form-button {
-    all: unset;
     display: block;
     width: 100%;
     margin-bottom: 15px;
     text-align: center;
     border-radius: 4px;
-    background-color: rgb(30, 30, 126);
+    background-color: #16396b;
     color: #f5f5f5;
-    font-size: 1.2em;
-    padding: 20px 20px;
+    font-size: 1em;
+    padding: 15px 15px;
     cursor: pointer;
 }
 
+.section-header {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+}
+
 .section-title {
-    color: rgb(30, 30, 126);
+    color: #16396b;
 }
 
 .articles {
@@ -114,6 +82,7 @@ button {
 }
 
 .article {
+    box-sizing: border-box;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -122,36 +91,20 @@ button {
     border-radius: 4px;
     border: 1px solid #f5f5f5;
     background-color: #fcfcfc;
-    font-size: .75em;
-}
-
-.form-header {
-    color: rgb(30, 30, 126);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.article div span {
-    margin-right: 10px;
-}
-
-.article div a {
-    padding: 0 5px;
+    font-size: .83em;
 }
 
 #close_edit_mode {
-    all: unset;
     display: none;
 }
 
 .actions {
     display: flex;
+    gap: 10px;
 }
 
 .action-icon {
     cursor: pointer;
-    margin-left: 15px;
 }
 
 .news-title {
@@ -163,6 +116,31 @@ button {
     color: rgb(30, 30, 126);
     margin-left: 5px;
 }
+
+.flash-message {
+    max-width: 500px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 15px;
+    text-align: center;
+    border-radius: 4px;
+    font-size: .75em;
+}
+
+.error p {
+    padding: 15px 15px;
+    border: 1px solid #ff7575;
+    background-color: #ffcdcdd5;
+    color: #ff7575;
+}
+
+.success p {
+    padding: 15px 15px;
+    border: 1px solid #4aa54a;
+    background-color: #d5fcd695;
+    color: #4aa54a;
+}
+
 
 
 

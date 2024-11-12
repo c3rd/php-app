@@ -16,7 +16,7 @@ if (empty($_SESSION)) {
 </head>
 <body>
     <header>
-        <img src="public/images/logo.svg" alt="Logo" class="logo">
+        <img src="./images/logo.svg" alt="Logo" class="logo">
     </header>
     <main class="container">
         <?php if(isset($_SESSION['message'])) { ?>
