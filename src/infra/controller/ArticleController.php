@@ -22,12 +22,12 @@ class ArticleController {
             {
                 $article = new Article($_POST['article_id'], $_POST['title'], $_POST['description']);
                 $this->articleRepository->update($article);
-                $message = 'News was changed sucessfully!';
+                $message = 'News was sucessfully changed!';
             }
             elseif (!empty($_POST['article_id']) && $_POST['action'] == 'delete')
             {
                 $this->articleRepository->delete($_POST['article_id']);
-                $message = 'News was sucessfully deleted';
+                $message = 'News was deleted';
             }
             else
             {
