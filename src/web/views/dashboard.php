@@ -2,12 +2,12 @@
 
 use Infra\Database\MysqlPDOConnection;
 
-require_once './src/infra/database/DatabaseConnection.php';
-require_once './src/infra/database/MysqlPDOConnection.php';
-require_once './src/application/repository/IArticleRepository.php';
-require_once './src/infra/repository/ArticleRepository.php';
-require_once './src/infra/controller/ArticleController.php';
-require_once './src/domain/Article.php';
+require_once '../../infra/database/DatabaseConnection.php';
+require_once '../../infra/database/MysqlPDOConnection.php';
+require_once '../../application/repository/IArticleRepository.php';
+require_once '../../infra/repository/ArticleRepository.php';
+require_once '../../infra/controller/ArticleController.php';
+require_once '../../domain/Article.php';
 
 $articleRepository = new \Infra\Repository\ArticleRepository(MysqlPDOConnection::getInstance());
 $articleController = new \Infra\Controller\ArticleController($articleRepository);

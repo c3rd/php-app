@@ -15,6 +15,10 @@ header {
     justify-content: center;
 }
 
+button {
+    all: unset;
+}
+
 .container {
     width: 90%;
     max-width: 1200px;
@@ -47,6 +51,30 @@ header {
     background-color: #ffd6d6;
     font-size: .75em;
     color: red;
+    text-align: center;
+}
+
+.error p {
+    width: 100%;
+    padding: 20px 20px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #ffd9d9;
+    background-color: #ffd6d6;
+    font-size: .75em;
+    color: red;
+    text-align: center;
+}
+
+.success p {
+    width: 100%;
+    padding: 20px 20px;
+    margin-bottom: 15px;
+    border-radius: 4px;
+    border: 1px solid #daffd9;
+    background-color: #dbffd6;
+    font-size: .75em;
+    color: green;
     text-align: center;
 }
 
@@ -97,6 +125,13 @@ header {
     font-size: .75em;
 }
 
+.form-header {
+    color: rgb(30, 30, 126);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .article div span {
     margin-right: 10px;
 }
@@ -105,6 +140,29 @@ header {
     padding: 0 5px;
 }
 
+#close_edit_mode {
+    all: unset;
+    display: none;
+}
+
+.actions {
+    display: flex;
+}
+
+.action-icon {
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+.news-title {
+    font-weight: bolder;
+    color: rgb(30, 30, 126);
+}
+
+.news-description {
+    color: rgb(30, 30, 126);
+    margin-left: 5px;
+}
 
 
 

@@ -26,8 +26,8 @@ if (empty($_SESSION)) {
         <?php }    
             unset($_SESSION['message']);
         ?>
-        <?php if (empty($_SESSION['username'])) { include_once 'login.php';?>
-        <?php } else { include 'dashboard.php'; } ?>
+        <?php if (empty($_SESSION['username'])) { include_once '../views/login.php';?>
+        <?php } else { include_once '../views/dashboard.php'; } ?>
     </main>
 </body>
 </html>

@@ -5,9 +5,9 @@ if (empty($_SESSION)) {
 use Infra\Controller\AuthController;
 use Infra\Repository\AuthRepository;
 
-require_once './src/application/repository/IAuthRepository.php';
-require_once './src/infra/controller/AuthController.php';
-require_once './src/infra/repository/AuthRepository.php';
+require_once '../../application/repository/IAuthRepository.php';
+require_once '../../infra/controller/AuthController.php';
+require_once '../../infra/repository/AuthRepository.php';
 
 $authRepository = new AuthRepository();
 $authController = new AuthController($authRepository);
