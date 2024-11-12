@@ -18,30 +18,15 @@ class AuthController {
         $action = $_REQUEST['action'] ?? '';
         switch ($action) {
             case 'login':
-                $this->login();
+                $this->authRepository->login($_POST['username'], $_POST['password']);
                 break;
             case 'logout':
-                $this->logout();
+                $this->authRepository->logout();
                 break;
             default:
                 break;
         }
         header('Location: index.php');
     }
-
-    private function login()
-    {
-        $username = $_POST['username'];
-        $password = $_POST['password'];
-        $authenticated = $this->authRepository->login($username, $password);
-        if (!$authenticated) {
-            $_SESSION['message'] = 'Wrong Login Data!';
-        }
-    }
-
-    private function logout()
-    {
-        $this->authRepository->logout();
-    }
-
+    
 }

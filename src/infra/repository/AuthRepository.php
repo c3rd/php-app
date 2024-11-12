@@ -10,9 +10,9 @@ class AuthRepository implements IAuthRepository {
     {
         if ($username === 'admin' && $password === 'test') {
             $_SESSION['username'] = $username;
-            return true;
+        } else {
+            $_SESSION['message'] = 'Wrong Login Data!';
         }
-        return false;
     }
 
     public function logout()
