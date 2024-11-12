@@ -5,45 +5,39 @@ namespace Infra\Repository;
 use Application\Repository\IArticleRepository;
 use Domain\Article;
 use Infra\Database\DatabaseConnection;
-use PDO;
 
 class ArticleRepository implements IArticleRepository {
 
-    private $pdo;
+    private $connection;
 
-    public function __construct(PDO $pdo)
+    public function __construct(DatabaseConnection $connection)
     {
-        $this->pdo = $pdo;
+        $this->connection = $connection;
     }
 
     public function all()
     {
-        $stmt = $this->pdo->query("SELECT * FROM articles");
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $this->connection->query("SELECT * FROM articles", []);
     }
 
     public function create(Article $article)
     {
-        $stmt = $this->pdo->prepare("INSERT INTO articles (title, description) VALUES (:title, :description)");
-        return $stmt->execute(['title' => $article->getTitle(), 'description' => $article->getDescription()]);
+        return $this->connection->query("INSERT INTO articles (title, description) VALUES (:title, :description)", ['title' => $article->getTitle(), 'description' => $article->getDescription()]);
     }
 
     public function find(int $id)
     {
-        $stmt = $this->pdo->query("SELECT * FROM articles WHERE id = $id ORDER BY created_at DESC LIMIT 1");
-        return $stmt->fetch(PDO::FETCH_ASSOC);
+        return $this->connection->query("SELECT * FROM articles WHERE id = :id ORDER BY created_at DESC LIMIT 1", ['id' => $id]);
     }
 
     public function update(Article $article)
     {
-        $stmt = $this->pdo->prepare("UPDATE articles SET title = :title, description = :description WHERE id = :id");
-        return $stmt->execute(['id' => $article->getId(), 'title' => $article->getTitle(), 'description' => $article->getDescription()]);
+        return $this->connection->query("UPDATE articles SET title = :title, description = :description WHERE id = :id", ['id' => $article->getId(), 'title' => $article->getTitle(), 'description' => $article->getDescription()]);
     }
 
     public function delete(int $id)
     {
-        $stmt = $this->pdo->prepare("DELETE FROM articles WHERE id = :id");
-        return $stmt->execute(['id' => $id]);
+        return $this->connection->query("DELETE FROM articles WHERE id = :id", ['id' => $id]);
     }
 
 }
